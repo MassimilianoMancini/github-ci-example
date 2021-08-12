@@ -12,7 +12,7 @@ jobs:
           matrix:
             include:
               - java: 11
-                additional-maven-args: "-Pjacoco"
+                additional-maven-args: "-Pjacoco -DrepoToken=$COVERALLS_REPO_TOKEN coveralls:report"
               - java: 15
         
         name: Build with Java ${{ matrix.java }}
@@ -32,8 +32,5 @@ jobs:
           run: >
             mvn -f github-ci-example/pom.xml 
             clean verify ${{ matrix.additional-maven-args }}
-        - name: Archive JUnit Report
-          uses: actions/upload-artifact@v2
-          with:
-            name: surefire-report-jdk-${{ matrix.java }}
-            path: '**/target/site'
+          env:
+            COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_TOKEN }}
