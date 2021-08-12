@@ -26,5 +26,10 @@
 			<type>2</type>
 			<location>C:/Users/massi/Documents/unifi/apt/projects/github-ci-example/.github</location>
 		</link>
+		<link>
+			<name>README.md</name>
+			<type>1</type>
+			<location>C:/Users/massi/Documents/unifi/apt/projects/github-ci-example/README.md</location>
+		</link>
 	</linkedResources>
 </projectDescription>
