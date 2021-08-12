@@ -1,8 +1,7 @@
 # This workflow will build a Java project with Maven
-name: Java CI with Maven in Linux
+name: Java CI with Maven for PR on windows and mac
 
 on:
-    push:
     pull_request:
     
 jobs:
@@ -10,16 +9,15 @@ jobs:
         runs-on: ${{ matrix.os }}
         strategy:
           matrix:
-            os: [ubuntu-latest, macos-latest, windows-latest]
-            java: [11, 15]
+            os: [macos-latest, windows-latest]
         
-        name: Build with Java ${{ matrix.java }} on ${{ matrix.os }}
+        name: Build with Java 11 on ${{ matrix.os }}
         steps:
         - uses: actions/checkout@v2
-        - name: Set up JDK ${{ matrix.java }} on ${{ matrix.os }}
+        - name: Set up JDK 11 on ${{ matrix.os }}
           uses: actions/setup-java@v1
           with:
-            java-version: ${{ matrix.java }}
+            java-version: 11
         - name: Cache Maven packages
           uses: actions/cache@v2
           with:
