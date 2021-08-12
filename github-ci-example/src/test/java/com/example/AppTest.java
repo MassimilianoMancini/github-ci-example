@@ -16,8 +16,13 @@ public class AppTest
 	}
 	
 	@Test
-    public void testSayHello()
+    void testSayHello()
     {
         assertThat(app.sayHello()).isEqualTo("Hello");
     }
+	
+	@Test
+	void testSayHelloWithName() {
+		assertThat(app.sayHello("World")).isEqualTo("Hello World");
+	}
 }
