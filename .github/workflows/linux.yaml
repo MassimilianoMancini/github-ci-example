@@ -16,7 +16,7 @@ jobs:
                   -Pjacoco
                   -DrepoToken=$COVERALLS_REPO_TOKEN
                   -DpullRequest=${{ github.event.pull_request.number }}
-                   coveralls:report
+                  coveralls:report
               - java: 15
         
         name: Build with Java ${{ matrix.java }}
