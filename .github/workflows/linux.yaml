@@ -10,7 +10,10 @@ jobs:
         runs-on: ubuntu-latest
         strategy:
           matrix:
-            java: [11, 15]
+            include:
+              - java: 11
+                additional-maven-args: "-Pjacoco"
+              - java: 15
         
         name: Build with Java ${{ matrix.java }}
         steps:
@@ -28,8 +31,7 @@ jobs:
         - name: Build with Maven
           run: >
             mvn -f github-ci-example/pom.xml 
-            clean verify
-            surefire-report:report-only site:site -DgenerateReports=false
+            clean verify ${{ matrix.additional-maven-args }}
         - name: Archive JUnit Report
           uses: actions/upload-artifact@v2
           with:
